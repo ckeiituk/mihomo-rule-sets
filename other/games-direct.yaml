@@ -168,3 +168,7 @@ payload:
 
   # MIMESIS
   - PROCESS-NAME,MIMESIS.exe
+
+  # Local process overrides
+  - PROCESS-NAME,Tanki.exe
+  - PROCESS-NAME,Wow.exe

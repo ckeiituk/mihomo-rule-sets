@@ -1,0 +1,5 @@
+# One rule per line. Format examples:
+# PROCESS-NAME,App.exe
+# PROCESS-NAME-REGEX,SomeApp.*
+PROCESS-NAME,Tanki.exe
+PROCESS-NAME,Wow.exe
