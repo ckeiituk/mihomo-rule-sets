@@ -1,12 +1,28 @@
-# One rule per line. Format examples:
+# One rule per line.
+# Use `## Game Name` to start a section that will be rendered as a comment block
+# inside `# Local process overrides` in `other/games-direct.yaml`.
+# Format examples:
 # PROCESS-NAME,App.exe
 # PROCESS-NAME-REGEX,SomeApp.*
+
+## Tanki Online
 PROCESS-NAME,Tanki.exe
+
+## World of Warcraft
 PROCESS-NAME,Wow.exe
+PROCESS-NAME,WowClassic.exe
+PROCESS-NAME,WowT.exe
+PROCESS-NAME,WowB.exe
+PROCESS-NAME,Battle.net.exe
+PROCESS-NAME,BlizzardBrowser.exe
+
+## League of Legends
 PROCESS-NAME,LeagueClient.exe
 PROCESS-NAME,LeagueClientUx.exe
 PROCESS-NAME,LeagueClientUxRenderer.exe
 PROCESS-NAME,League of Legends.exe
 PROCESS-NAME,RiotClientServices.exe
+
+## Steam
 PROCESS-NAME,steam.exe
 PROCESS-NAME,steamwebhelper.exe

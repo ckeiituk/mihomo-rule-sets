@@ -170,12 +170,23 @@ payload:
   - PROCESS-NAME,MIMESIS.exe
 
   # Local process overrides
+
+  # Tanki Online
   - PROCESS-NAME,Tanki.exe
+
+  # World of Warcraft
   - PROCESS-NAME,Wow.exe
+  - PROCESS-NAME,WowClassic.exe
+  - PROCESS-NAME,WowT.exe
+  - PROCESS-NAME,WowB.exe
+
+  # League of Legends
   - PROCESS-NAME,LeagueClient.exe
   - PROCESS-NAME,LeagueClientUx.exe
   - PROCESS-NAME,LeagueClientUxRenderer.exe
   - PROCESS-NAME,League of Legends.exe
   - PROCESS-NAME,RiotClientServices.exe
+
+  # Steam
   - PROCESS-NAME,steam.exe
   - PROCESS-NAME,steamwebhelper.exe
