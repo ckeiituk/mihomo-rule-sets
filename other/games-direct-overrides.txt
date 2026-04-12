@@ -3,3 +3,10 @@
 # PROCESS-NAME-REGEX,SomeApp.*
 PROCESS-NAME,Tanki.exe
 PROCESS-NAME,Wow.exe
+PROCESS-NAME,LeagueClient.exe
+PROCESS-NAME,LeagueClientUx.exe
+PROCESS-NAME,LeagueClientUxRenderer.exe
+PROCESS-NAME,League of Legends.exe
+PROCESS-NAME,RiotClientServices.exe
+PROCESS-NAME,steam.exe
+PROCESS-NAME,steamwebhelper.exe
