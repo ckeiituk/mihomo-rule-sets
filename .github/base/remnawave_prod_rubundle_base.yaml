@@ -1,0 +1,240 @@
+remnawave:
+  includeHiddenHosts: false
+
+x-anchors:
+  reserved_ips: &reserved_ips
+    - 0.0.0.0/8
+    - 10.0.0.0/8
+    - 100.64.0.0/10
+    - 127.0.0.0/8
+    - 169.254.0.0/16
+    - 172.16.0.0/12
+    - 192.0.0.0/24
+    - 192.0.2.0/24
+    - 192.88.99.0/24
+    - 192.168.0.0/16
+    - 198.51.100.0/24
+    - 203.0.113.0/24
+    - 224.0.0.0/3
+
+  dns_ru: &dns_ru
+    - tls://77.88.8.8
+
+  dns_proxy: &dns_proxy
+    - https://194.242.2.2/dns-query#🌍 VPN
+
+  pr_http: &pr_http
+    type: http
+    interval: 86400
+
+  rp_classical: &rp_classical
+    <<: *pr_http
+    behavior: classical
+    format: yaml
+    proxy: 🌍 VPN
+
+  rp_domain: &rp_domain
+    <<: *pr_http
+    behavior: domain
+    format: mrs
+    proxy: 🌍 VPN
+
+  rp_ipcidr: &rp_ipcidr
+    <<: *pr_http
+    behavior: ipcidr
+    format: mrs
+    proxy: 🌍 VPN
+
+tcp-concurrent: true
+enable-process: true
+find-process-mode: always
+mode: rule
+log-level: info
+ipv6: false
+keep-alive-interval: 30
+unified-delay: true
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  sniff:
+    HTTP:
+      ports:
+        - 80
+        - 8080-8880
+      override-destination: true
+    TLS:
+      ports:
+        - 443
+        - 8443
+    QUIC:
+      ports:
+        - 443
+
+tun:
+  enable: true
+  stack: gvisor
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - any:53
+    - tcp://any:53
+  strict-route: true
+  route-exclude-address: *reserved_ips
+
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  cache-algorithm: arc
+  prefer-h3: false
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - rule-set:geosite-private
+    - "+.lan"
+    - "+.local"
+    - "+.msftncsi.com"
+    - "+.msftconnecttest.com"
+  default-nameserver: *dns_ru
+  proxy-server-nameserver: *dns_ru
+  direct-nameserver: *dns_ru
+  nameserver:
+    - https://cloudflare-dns.com/dns-query
+  nameserver-policy:
+    rule-set:geosite-private:
+      - system
+    rule-set:ads-all:
+      - rcode://refused
+    "rule-set:apps_ipcheck,youtube,telegram_domains,discord_domains,ru-bundle,whatsapp_domains": *dns_proxy
+
+proxies: # LEAVE THIS LINE!
+
+proxy-groups:
+  - name: 🌍 VPN
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png
+    type: select
+    proxies:
+      - ⚡️ Fastest
+      # LEAVE THIS LINE!
+
+  - name: ▶️ YouTube
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
+    type: select
+    proxies:
+      - 🌍 VPN
+      # LEAVE THIS LINE!
+
+  - name: ⚡️ Fastest
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
+    type: url-test
+    lazy: true
+    tolerance: 150
+    url: https://captive.apple.com/generate_204
+    interval: 300
+    proxies:
+      # LEAVE THIS LINE!
+
+  - name: ♻️ БезVPN
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
+    remnawave:
+      include-proxies: false
+    type: select
+    hidden: true
+    proxies:
+      - DIRECT
+
+rule-providers:
+  geosite-private:
+    <<: *rp_domain
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs
+    path: ./rule-sets/geosite-private.mrs
+  ads-all:
+    <<: *rp_domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/category-ads-all.mrs
+    path: ./ads-all.mrs
+  torrent-trackers:
+    <<: *rp_domain
+    url: https://cdn.jsdelivr.net/gh/legiz-ru/mihomo-rule-sets@main/other/torrent-trackers.mrs
+    path: ./rule-sets/torrent-trackers.mrs
+  torrent-clients:
+    <<: *rp_classical
+    url: https://cdn.jsdelivr.net/gh/legiz-ru/mihomo-rule-sets@main/other/torrent-clients.yaml
+    path: ./rule-sets/torrent-clients.yaml
+  games-direct:
+    <<: *rp_classical
+    url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/other/games-direct.yaml
+    path: ./rule-sets/games-direct.yaml
+  ru-app-list:
+    <<: *rp_classical
+    url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/other/ru-app-list.yaml
+    path: ./rule-sets/ru-app-list.yaml
+  youtube:
+    <<: *rp_domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/youtube.mrs
+    path: ./rule-sets/youtube.mrs
+  whatsapp_domains:
+    <<: *rp_domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/whatsapp.mrs
+    path: ./rule-sets/whatsapp_domains.mrs
+  meta_ips:
+    <<: *rp_ipcidr
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/facebook.mrs
+    path: ./rule-sets/meta_ips.mrs
+  telegram_domains:
+    <<: *rp_domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/telegram.mrs
+    path: ./rule-sets/telegram_domains.mrs
+  telegram_ips:
+    <<: *rp_ipcidr
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/telegram.mrs
+    path: ./rule-sets/telegram_ips.mrs
+  discord_domains:
+    <<: *rp_domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/discord.mrs
+    path: ./rule-sets/discord_domains.mrs
+  discord_voiceips:
+    <<: *rp_ipcidr
+    url: https://cdn.jsdelivr.net/gh/legiz-ru/mihomo-rule-sets@main/other/discord-voice-ip-list.mrs
+    path: ./rule-sets/discord_voiceips.mrs
+  cloudflare:
+    <<: *rp_ipcidr
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geoip/cloudflare.mrs
+    path: ./rule-sets/cloudflare.mrs
+  ru-bundle:
+    <<: *rp_domain
+    url: https://cdn.jsdelivr.net/gh/legiz-ru/mihomo-rule-sets@main/ru-bundle/rule.mrs
+    path: ./ru-bundle/rule.mrs
+  rknasnblock:
+    <<: *rp_ipcidr
+    url: https://cdn.jsdelivr.net/gh/legiz-ru/mihomo-rule-sets@main/ru-bundle/rknasnblock.mrs
+    path: ./ru-bundle/rknasnblock.mrs
+  apps_ipcheck:
+    type: inline
+    behavior: classical
+    payload:
+      - DOMAIN,ipwho.is
+      - DOMAIN,api.ip.sb
+      - DOMAIN,ipapi.co
+      - DOMAIN,ipinfo.io
+      - DOMAIN,ip-api.com
+
+rules:
+  - RULE-SET,apps_ipcheck,🌍 VPN
+  - RULE-SET,ads-all,REJECT
+  - RULE-SET,ru-app-list,♻️ БезVPN
+  - OR,((RULE-SET,torrent-clients),(RULE-SET,torrent-trackers)),♻️ БезVPN
+  - RULE-SET,games-direct,♻️ БезVPN
+  - RULE-SET,youtube,▶️ YouTube
+  - OR,((RULE-SET,whatsapp_domains),(RULE-SET,meta_ips)),🌍 VPN
+  - OR,((RULE-SET,telegram_domains),(RULE-SET,telegram_ips)),🌍 VPN
+  - OR,((RULE-SET,discord_domains),(RULE-SET,discord_voiceips)),🌍 VPN
+  - OR,((PROCESS-NAME,Discord.exe),(PROCESS-NAME,org.cromite.cromite)),🌍 VPN
+  - RULE-SET,ru-bundle,🌍 VPN
+  - RULE-SET,cloudflare,🌍 VPN
+  - RULE-SET,rknasnblock,🌍 VPN
+  - MATCH,♻️ БезVPN
