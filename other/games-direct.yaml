@@ -179,6 +179,7 @@ payload:
   - PROCESS-NAME,WowClassic.exe
   - PROCESS-NAME,WowT.exe
   - PROCESS-NAME,WowB.exe
+  - PROCESS-NAME-REGEX,(?i)^wow circle.*\.exe$,DIRECT
 
   # League of Legends
   - PROCESS-NAME,LeagueClient.exe
