@@ -32,12 +32,22 @@ jobs:
       - name: Apply local games-direct overrides
         run: python3 .github/workflows/apply_games_direct_overrides.py
 
-      - name: Commit and push changes
+      - name: Commit local override changes
         run: |
-          if git diff --quiet && git diff --cached --quiet; then
-            echo "No changes to commit"
+          git add .github/workflows/apply_games_direct_overrides.py .github/workflows/sync-upstream.yml other/games-direct-overrides.txt other/games-direct.yaml
+
+          if git diff --cached --quiet; then
+            echo "No local override changes to commit"
             exit 0
           fi
-          git add .github/workflows/apply_games_direct_overrides.py .github/workflows/sync-upstream.yml other/games-direct-overrides.txt other/games-direct.yaml
+
           git commit -m "chore: sync upstream"
+
+      - name: Push fork main
+        run: |
+          if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" ]; then
+            echo "origin/main is already up to date"
+            exit 0
+          fi
+
           git push origin main
