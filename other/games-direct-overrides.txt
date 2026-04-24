@@ -28,3 +28,6 @@ PROCESS-NAME,RiotClientServices.exe
 ## Steam
 PROCESS-NAME,steam.exe
 PROCESS-NAME,steamwebhelper.exe
+
+## No More Room in Hell
+PROCESS-NAME,nmrih.exe
