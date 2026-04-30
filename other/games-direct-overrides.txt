@@ -31,3 +31,6 @@ PROCESS-NAME,steamwebhelper.exe
 
 ## No More Room in Hell
 PROCESS-NAME,nmrih.exe
+
+## HoMT
+PROCESS-NAME,HeroesOldenEra.exe
