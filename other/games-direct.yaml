@@ -197,3 +197,6 @@ payload:
 
   # HoMT
   - PROCESS-NAME,HeroesOldenEra.exe
+
+  # Binding of Isaac
+  - PROCESS-NAME,isaac-ng.exe
