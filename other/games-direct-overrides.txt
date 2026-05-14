@@ -34,3 +34,7 @@ PROCESS-NAME,nmrih.exe
 
 ## HoMT
 PROCESS-NAME,HeroesOldenEra.exe
+
+## Binding of Isaac
+PROCESS-NAME,isaac-ng.exe
+PROCESS-NAME,isaac-ng.exe
