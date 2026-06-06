@@ -37,3 +37,6 @@ PROCESS-NAME,HeroesOldenEra.exe
 
 ## Binding of Isaac
 PROCESS-NAME,isaac-ng.exe
+
+## RIOT
+PROCESS-NAME,Riot Client.exe
