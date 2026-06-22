@@ -187,6 +187,7 @@ payload:
   - PROCESS-NAME,LeagueClientUxRenderer.exe
   - PROCESS-NAME,League of Legends.exe
   - PROCESS-NAME,RiotClientServices.exe
+  - PROCESS-NAME,LeagueClientUxRender.exe
 
   # Steam
   - PROCESS-NAME,steam.exe
