@@ -166,3 +166,39 @@ payload:
 
   # MIMESIS
   - PROCESS-NAME,MIMESIS.exe
+
+  # Local process overrides
+
+  # Tanki Online
+  - PROCESS-NAME,Tanki.exe
+
+  # World of Warcraft
+  - PROCESS-NAME,Wow.exe
+  - PROCESS-NAME,WowClassic.exe
+  - PROCESS-NAME,WowT.exe
+  - PROCESS-NAME,WowB.exe
+  - PROCESS-NAME-REGEX,(?i)^wow circle.*\.exe$,DIRECT
+
+  # League of Legends
+  - PROCESS-NAME,LeagueClient.exe
+  - PROCESS-NAME,LeagueClientUx.exe
+  - PROCESS-NAME,LeagueClientUxRenderer.exe
+  - PROCESS-NAME,League of Legends.exe
+  - PROCESS-NAME,RiotClientServices.exe
+  - PROCESS-NAME,LeagueClientUxRender.exe
+
+  # Steam
+  - PROCESS-NAME,steam.exe
+  - PROCESS-NAME,steamwebhelper.exe
+
+  # No More Room in Hell
+  - PROCESS-NAME,nmrih.exe
+
+  # HoMT
+  - PROCESS-NAME,HeroesOldenEra.exe
+
+  # Binding of Isaac
+  - PROCESS-NAME,isaac-ng.exe
+
+  # RIOT
+  - PROCESS-NAME,Riot Client.exe
