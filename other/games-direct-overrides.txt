@@ -18,6 +18,11 @@ PROCESS-NAME,BlizzardBrowser.exe
 ### Circle
 PROCESS-NAME-REGEX,(?i)^wow circle.*\.exe$,DIRECT
 
+## Heroes of the Storm
+PROCESS-NAME,HeroesOfTheStorm_x64.exe
+PROCESS-NAME,HeroesSwitcher_x64.exe
+PROCESS-NAME,HeroesSwitcher.exe
+
 ## League of Legends
 PROCESS-NAME,LeagueClient.exe
 PROCESS-NAME,LeagueClientUx.exe
