@@ -207,3 +207,6 @@ payload:
 
   # RIOT
   - PROCESS-NAME,Riot Client.exe
+
+  # POE
+  - PROCESS-NAME,PathOfExileSteam.exe
