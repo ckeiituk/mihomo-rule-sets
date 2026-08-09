@@ -46,3 +46,6 @@ PROCESS-NAME,isaac-ng.exe
 
 ## RIOT
 PROCESS-NAME,Riot Client.exe
+
+## POE
+PROCESS-NAME,PathOfExileSteam.exe
