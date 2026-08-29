@@ -210,6 +210,11 @@ payload:
 
   # POE
   - PROCESS-NAME,PathOfExileSteam.exe
+  - PROCESS-NAME,PathOfExile.exe
+  - PROCESS-NAME,PathOfExile_x64.exe
+  - PROCESS-NAME,PathOfExile_x64Steam.exe
+  - PROCESS-NAME,PathOfExile_EGS.exe
+  - PROCESS-NAME,PathOfExile_x64EGS.exe
 
   # Reanimal
   - PROCESS-NAME,REANIMAL.exe
