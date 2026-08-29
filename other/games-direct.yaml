@@ -213,3 +213,7 @@ payload:
 
   # Reanimal
   - PROCESS-NAME,REANIMAL.exe
+
+  # Squad
+  - PROCESS-NAME,SquadGame.exe
+  - PROCESS-NAME,Squad.exe
