@@ -49,3 +49,6 @@ PROCESS-NAME,Riot Client.exe
 
 ## POE
 PROCESS-NAME,PathOfExileSteam.exe
+
+## Reanimal
+PROCESS-NAME,REANIMAL.exe
