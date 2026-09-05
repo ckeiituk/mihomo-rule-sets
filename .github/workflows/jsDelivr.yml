@@ -2,7 +2,7 @@ name: Purge jsDelivr CDN
 
 on:
   schedule:
-    - cron: '0 2 * * *'  # Каждый день в 00:30 UTC
+    - cron: '0 2 * * *'  # Каждый день в 02:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -10,12 +10,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Purge jsDelivr CDN for all files
         run: |
-          for file in $(find . -type f -not -path "./.git/*" | sed 's|^\./||'); do
-            cmd="curl -I \"https://purge.jsdelivr.net/gh/${{ github.repository }}@main/${file}\""
-            echo "Run cmd: ${cmd}"
-            eval ${cmd}
-          done
+          failed=0
+          total=0
+          while IFS= read -r file; do
+            total=$((total + 1))
+            url="https://purge.jsdelivr.net/gh/${{ github.repository }}@main/${file}"
+            echo "Purging: ${file}"
+            if ! curl -sS -o /dev/null -I \
+                 --retry 5 --retry-delay 5 --retry-all-errors \
+                 --connect-timeout 15 --max-time 60 \
+                 "${url}"; then
+              echo "::warning::Failed to purge ${file}"
+              failed=$((failed + 1))
+            fi
+            sleep 1
+          done < <(find . -type f -not -path "./.git/*" | sed 's|^\./||')
+
+          echo "Purged $((total - failed))/${total} files."
+          if [ "${failed}" -gt 0 ]; then
+            echo "::error::${failed} of ${total} files could not be purged."
+            exit 1
+          fi
