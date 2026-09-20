@@ -134,6 +134,7 @@ payload:
   # Overwatch 2
   - PROCESS-NAME,Overwatch.exe
   - PROCESS-NAME,Battle.net.exe
+  - PROCESS-NAME,battlenet.overlay.runtime.exe # Battle.net overlay authentication
   - PROCESS-NAME,BlizzardBrowser.exe
 
   # Phasmophobia
