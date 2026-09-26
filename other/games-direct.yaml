@@ -229,3 +229,7 @@ payload:
   - PROCESS-NAME,Warframe.exe
   - PROCESS-PATH-REGEX,(?i).*\\Warframe\\(Downloaded\\Public\\)?Tools\\Launcher\.exe$
   - PROCESS-PATH-REGEX,(?i).*\\Warframe\\(Downloaded\\Public\\)?Tools\\RemoteCrashSender\.exe$
+
+  # FIFA / EA SPORTS FC
+  - PROCESS-NAME-REGEX,(?i)^fifa.*\.exe$
+  - PROCESS-NAME-REGEX,(?i)^fc\d{2}\.exe$
