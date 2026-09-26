@@ -62,3 +62,9 @@ PROCESS-NAME,REANIMAL.exe
 ## Squad
 PROCESS-NAME,SquadGame.exe
 PROCESS-NAME,Squad.exe
+
+## Warframe
+PROCESS-NAME,Warframe.x64.exe
+PROCESS-NAME,Warframe.exe
+PROCESS-PATH-REGEX,(?i).*\\Warframe\\(Downloaded\\Public\\)?Tools\\Launcher\.exe$
+PROCESS-PATH-REGEX,(?i).*\\Warframe\\(Downloaded\\Public\\)?Tools\\RemoteCrashSender\.exe$
