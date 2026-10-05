@@ -169,3 +169,70 @@ payload:
 
   # AstrumPlay
   - PROCESS-NAME-REGEX,(?i)^AstrumPlay
+
+  # Local process overrides
+
+  # Tanki Online
+  - PROCESS-NAME,Tanki.exe
+
+  # World of Warcraft
+  - PROCESS-NAME,Wow.exe
+  - PROCESS-NAME,WowClassic.exe
+  - PROCESS-NAME,WowT.exe
+  - PROCESS-NAME,WowB.exe
+  - PROCESS-NAME-REGEX,(?i)^wow circle.*\.exe$,DIRECT
+
+  # Heroes of the Storm
+  - PROCESS-NAME,battlenet.overlay.runtime.exe
+  - PROCESS-NAME,HeroesOfTheStorm_x64.exe
+  - PROCESS-NAME,HeroesSwitcher_x64.exe
+  - PROCESS-NAME,HeroesSwitcher.exe
+
+  # League of Legends
+  - PROCESS-NAME,LeagueClient.exe
+  - PROCESS-NAME,LeagueClientUx.exe
+  - PROCESS-NAME,LeagueClientUxRenderer.exe
+  - PROCESS-NAME,League of Legends.exe
+  - PROCESS-NAME,RiotClientServices.exe
+  - PROCESS-NAME,LeagueClientUxRender.exe
+
+  # Steam
+  - PROCESS-NAME,steam.exe
+  - PROCESS-NAME,steamwebhelper.exe
+
+  # No More Room in Hell
+  - PROCESS-NAME,nmrih.exe
+
+  # HoMT
+  - PROCESS-NAME,HeroesOldenEra.exe
+
+  # Binding of Isaac
+  - PROCESS-NAME,isaac-ng.exe
+
+  # RIOT
+  - PROCESS-NAME,Riot Client.exe
+
+  # POE
+  - PROCESS-NAME,PathOfExileSteam.exe
+  - PROCESS-NAME,PathOfExile.exe
+  - PROCESS-NAME,PathOfExile_x64.exe
+  - PROCESS-NAME,PathOfExile_x64Steam.exe
+  - PROCESS-NAME,PathOfExile_EGS.exe
+  - PROCESS-NAME,PathOfExile_x64EGS.exe
+
+  # Reanimal
+  - PROCESS-NAME,REANIMAL.exe
+
+  # Squad
+  - PROCESS-NAME,SquadGame.exe
+  - PROCESS-NAME,Squad.exe
+
+  # Warframe
+  - PROCESS-NAME,Warframe.x64.exe
+  - PROCESS-NAME,Warframe.exe
+  - PROCESS-PATH-REGEX,(?i).*\\Warframe\\(Downloaded\\Public\\)?Tools\\Launcher\.exe$
+  - PROCESS-PATH-REGEX,(?i).*\\Warframe\\(Downloaded\\Public\\)?Tools\\RemoteCrashSender\.exe$
+
+  # FIFA / EA SPORTS FC
+  - PROCESS-NAME-REGEX,(?i)^fifa.*\.exe$
+  - PROCESS-NAME-REGEX,(?i)^fc\d{2}\.exe$
