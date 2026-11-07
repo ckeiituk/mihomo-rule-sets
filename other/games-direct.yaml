@@ -236,3 +236,7 @@ payload:
   # FIFA / EA SPORTS FC
   - PROCESS-NAME-REGEX,(?i)^fifa.*\.exe$
   - PROCESS-NAME-REGEX,(?i)^fc\d{2}\.exe$
+
+  # REMATCH
+  - PROCESS-NAME,RuntimeClient.exe
+  - PROCESS-NAME,RuntimeClient-Win64-Shipping.exe
