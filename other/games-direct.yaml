@@ -240,3 +240,9 @@ payload:
   # REMATCH
   - PROCESS-NAME,RuntimeClient.exe
   - PROCESS-NAME,RuntimeClient-Win64-Shipping.exe
+
+  # Warcraft III
+  - PROCESS-NAME,Warcraft III.exe
+  - PROCESS-NAME,Warcraft III Launcher.exe
+  - PROCESS-NAME,war3.exe
+  - PROCESS-NAME,Frozen Throne.exe
